@@ -1,3 +1,5 @@
+const copyStaticFiles = require("esbuild-copy-static-files");
+
 require("esbuild")
   .build({
     entryPoints: ["src/index.tsx"],
@@ -7,6 +9,11 @@ require("esbuild")
     loader: {
       ".png": "file",
     },
-    plugins: [],
+    plugins: [
+      copyStaticFiles({
+        src: "./src/public",
+        dest: "./dist",
+      }),
+    ],
   })
   .catch(() => process.exit(1));
