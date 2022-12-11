@@ -9,11 +9,12 @@ require("esbuild")
     loader: {
       ".png": "file",
     },
+    watch: true,
     plugins: [
       copyStaticFiles({
         src: "./src/public",
         dest: "./dist",
-      }),
+      })
     ],
   })
   .catch(() => process.exit(1));
